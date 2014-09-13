@@ -10,7 +10,6 @@ endfunction
 
 function! SwitchKbd()
     let g:current_kbd = !g:current_kbd
-    echom g:kbd_langs[g:current_kbd]
 endfunction
 
 function! SetLayout(layout)
@@ -19,7 +18,18 @@ function! SetLayout(layout)
     endif
 endfunction
 
-autocmd InsertEnter * call SetLayout(g:kbd_langs[g:current_kbd])
+function! GetCurrentKbd()
+    return g:kbd_langs[g:current_kbd]
+endfunction
+
+function! KbdCode()
+    return strpart(g:kbd_langs[g:current_kbd], 0, 2)
+endfunction
+
+autocmd InsertEnter * call SetLayout(GetCurrentKbd())
 autocmd InsertLeave * call SetLayout(g:kbd_langs[0])
 call Biling_init()
-execute "nnoremap <leader>k :call SwitchKbd()<CR>"
+execute "nnoremap <silent> <leader>k :call SwitchKbd()<CR>"
+
+call airline#parts#define_function('bikeystat', 'KbdCode')
+let g:airline_section_a = airline#section#create(['mode', ' [', 'bikeystat', ']'])
