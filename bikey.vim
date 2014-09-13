@@ -30,9 +30,9 @@ function! KbdCode()
     return strpart(g:kbd_langs[g:current_kbd], 0, 2)
 endfunction
 
+call Biling_init()
 autocmd InsertEnter * call SetLayout(GetCurrentKbd())
 autocmd InsertLeave * call SetLayout(g:kbd_langs[0])
-call Biling_init()
 execute "nnoremap <silent> <leader>k :call SwitchKbd()<CR>"
 
 call airline#parts#define_function('bikeystat', 'KbdCode')
