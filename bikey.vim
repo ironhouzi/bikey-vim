@@ -9,25 +9,32 @@ let g:loaded_bikey_plugin = 1
 
 function! Biling_init()
     let g:kbd_langs = split(system("qdbus org.kde.keyboard /Layouts getLayoutsList"))
-    let g:current_kbd = 0
 endfunction
 
 function! SwitchKbd()
-    let g:current_kbd = !g:current_kbd
+    let b:current_kbd = !b:current_kbd
+endfunction
+
+function! EnsureKbd()
+    if !exists('b:current_kbd')
+        let b:current_kbd = 0
+    endif
 endfunction
 
 function! SetLayout(layout)
-    if g:current_kbd == 1
+    if b:current_kbd == 1
         call system("qdbus org.kde.keyboard /Layouts setLayout " . a:layout)
     endif
 endfunction
 
 function! GetCurrentKbd()
-    return g:kbd_langs[g:current_kbd]
+    call EnsureKbd()
+    return g:kbd_langs[b:current_kbd]
 endfunction
 
 function! KbdCode()
-    return strpart(g:kbd_langs[g:current_kbd], 0, 2)
+    call EnsureKbd()
+    return strpart(g:kbd_langs[b:current_kbd], 0, 2)
 endfunction
 
 call Biling_init()
