@@ -1,7 +1,11 @@
-if exists('g:loaded_biling_plugin')
+" BiKey.vim - Bilingual Keyboard support for Vim in KDE
+" Maintainer:   Robin Skahjem-Eriksen <robinds@student.matnat.uio.no>
+" Version:      0.1
+
+if exists('g:loaded_bikey_plugin')
     finish
 endif
-let g:loaded_biling_plugin = 1
+let g:loaded_bikey_plugin = 1
 
 function! Biling_init()
     let g:kbd_langs = split(system("qdbus org.kde.keyboard /Layouts getLayoutsList"))
