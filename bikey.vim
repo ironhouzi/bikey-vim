@@ -7,7 +7,7 @@ if exists('g:loaded_bikey_plugin')
 endif
 let g:loaded_bikey_plugin = 1
 
-function! Biling_init()
+function! BiKey_init()
     let g:kbd_langs = split(system("qdbus org.kde.keyboard /Layouts getLayoutsList"))
 endfunction
 
@@ -37,7 +37,7 @@ function! KbdCode()
     return strpart(g:kbd_langs[b:current_kbd], 0, 2)
 endfunction
 
-call Biling_init()
+call BiKey_init()
 autocmd InsertEnter * call SetLayout(GetCurrentKbd())
 autocmd InsertLeave * call SetLayout(g:kbd_langs[0])
 execute "nnoremap <silent> <leader>k :call SwitchKbd()<CR>"
