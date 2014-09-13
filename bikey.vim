@@ -1,4 +1,4 @@
-" BiKey.vim - Bilingual Keyboard support for Vim in KDE
+" BiKey - Bilingual Keyboard support for Vim in KDE
 " Maintainer:   Robin Skahjem-Eriksen <robinds@student.matnat.uio.no>
 " Version:      0.1
 
