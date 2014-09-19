@@ -2,6 +2,7 @@
 " Maintainer:   Robin Skahjem-Eriksen <robinds@student.matnat.uio.no>
 " Version:      0.1
 
+" Disable plugin if run from remote SSH
 if exists('g:loaded_bikey_plugin') || !empty($SSH_CLIENT) || !empty($SSH_TTY)
     finish
 endif
