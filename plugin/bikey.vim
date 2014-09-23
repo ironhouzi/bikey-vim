@@ -24,7 +24,7 @@ endfunction
 
 function! SetLayout(layout)
     if b:current_kbd == 1
-        call system("qdbus org.kde.keyboard /Layouts setLayout " . a:layout)
+        call system("qdbus org.kde.keyboard /Layouts setLayout \"" . a:layout . "\"")
     endif
 endfunction
 
