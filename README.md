@@ -6,4 +6,4 @@ Small plugin for managing bilingual keyboard layouts for Vim in a KDE environmen
 ##Todo
 - [x] Disable when running Vim remotely.
 - [x] Works on plasma5.
-- [ ] Catch exceptions for running in read only buffers.
+- [ ] Disable when opening a read-only buffer.
