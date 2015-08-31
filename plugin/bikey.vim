@@ -8,10 +8,10 @@ if exists('g:loaded_bikey_plugin') || !empty($SSH_CLIENT) || !empty($SSH_TTY)
 endif
 let g:loaded_bikey_plugin = 1
 
-let command_string = "QT_SELECT=4 qdbus org.kde.keyboard /Layouts "
+let g:command_string = "QT_SELECT=4 qdbus org.kde.keyboard /Layouts "
 
 function! BiKey_init()
-    let g:kbd_langs = split(system(command_string . "getLayoutsList"))
+    let g:kbd_langs = split(system(g:command_string . "getLayoutsList"))
 endfunction
 
 function! SwitchKbd()
@@ -26,7 +26,7 @@ endfunction
 
 function! SetLayout(layout)
     if b:current_kbd == 1
-        call system(command . "setLayout \"" . a:layout . "\"")
+        call system(g:command_string . "setLayout \"" . a:layout . "\"")
     endif
 endfunction
 
